@@ -6,6 +6,7 @@ import {
 } from 'components/common/common';
 import DetailedQuest from 'components/detailed-quest/detailed-quest';
 import Contacts from 'components/contacts/contacts';
+import NotFoundScreen from 'components/not-found-screen/not-found-screen';
 import Home from 'components/home/home';
 import { appTheme } from './common';
 import * as S from './app.styled';
@@ -21,8 +22,11 @@ const App = () => (
         <Route exact path="/contacts">
           <Contacts />
         </Route>
-        <Route path="/">
+        <Route exact path="/">
           <Home />
+        </Route>
+        <Route>
+          <NotFoundScreen />
         </Route>
       </Switch>
     </Router>
