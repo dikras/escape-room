@@ -22,14 +22,25 @@ export const ImageSize = {
   }
 };
 
-/* export const QuestType = {
-  AllQuests: 'Все квесты',
-  Adventure: 'Приключения',
-  Horror: 'Ужасы',
-  Mystic: 'Мистика',
-  Detective: 'Детектив',
-  Scifi: 'Sci-fi',
-}; */
+export const City = {
+  lat: 59.968159,
+  lng: 30.316882,
+  zoom: 16,
+}
+
+export const EscapeRoom = {
+  lat: 59.968432,
+  lng: 30.317619,
+}
+
+export const IconSize = {
+  ICON_WIDTH: 56,
+  ICON_HEIGHT: 70,
+  ANCHOR_WIDTH: 28,
+  ANCHOR_HEIGHT: 55,
+};
+
+export const URL_MARKER = 'img/icon-blip.svg';
 
 export const QuestType = {
   AllQuests: {
