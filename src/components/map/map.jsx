@@ -29,7 +29,3 @@ const Map = ({ city }) => {
 }
 
 export default Map;
-
-
-// http://localhost:3000/assets/img/icon-blip.svg
-// http://localhost:3000/img/cover-ritual.jpg
