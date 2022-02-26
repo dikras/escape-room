@@ -1,11 +1,23 @@
-import { ActionType } from "const";
+import { ActionType } from 'const';
+import { createAction } from '@reduxjs/toolkit';
 
-export const changeQuestType = (questType) => ({
-  type: ActionType.ChangeQuestType,
-  payload: questType,
-});
+export const changeQuestType = createAction(
+  ActionType.ChangeQuestType,
+  (questType) => ({
+    payload: questType,
+  }),
+);
 
-export const createQuestsList = (quests) => ({
-  type: ActionType.CreateQuestsList,
-  payload: quests,
-});
+export const loadQuests = createAction(
+  ActionType.LoadQuests,
+  (quests) => ({
+    payload: quests,
+  }),
+);
+
+export const loadQuest = createAction(
+  ActionType.LoadQuest,
+  (quest) => ({
+    payload: quest,
+  }),
+);

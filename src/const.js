@@ -71,5 +71,11 @@ export const QuestType = {
 
 export const ActionType = {
   ChangeQuestType: 'changeQuestType',
-  CreateQuestsList: 'createQuestsList',
+  LoadQuests: 'loadQuests',
+  LoadQuest: 'loadQuest',
+}
+
+export const APIRoute = {
+  Quests: '/quests',
+  Orders: '/orders',
 }
