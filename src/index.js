@@ -1,19 +1,30 @@
 import { StrictMode } from 'react';
 import { render } from 'react-dom';
-import { createStore } from 'redux';
+import {configureStore} from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import App from 'components/app/app';
-import { quests } from './mocks/quests';
-import { reducer } from 'store/reducer';
-import { createQuestsList } from 'store/action';
+import { rootReducer } from 'store/root-reducer';
+import { createAPI } from 'api';
+import { fetchQuestsAction } from 'store/api-actions';
 
-const store = createStore(reducer);
-store.dispatch(createQuestsList(quests));
+const api = createAPI();
+
+const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      thunk: {
+        extraArgument: api,
+      },
+    }),
+});
+
+store.dispatch(fetchQuestsAction());
 
 render(
   <StrictMode>
     <Provider store={store}>
-      <App quests={quests} />
+      <App />
     </Provider>
   </StrictMode>,
   document.getElementById('root'),

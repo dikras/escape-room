@@ -7,25 +7,22 @@ import {
 import { QuestsCatalog } from './components/components';
 import * as S from './home.styled';
 import { changeQuestType } from 'store/action';
-import {connect} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { QuestType } from 'const';
+import { getQuests } from 'store/quests-reducer/selector';
+import { getCurrentQuestType } from 'store/app-reducer/selector';
 
-const mapStateToProps = ({ quests, currentQuestType }) => ({
-  quests,
-  currentQuestType,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onQuestTypeClick(questType) {
-    dispatch(changeQuestType(questType));
-  },
-});
-
-const connector = connect(mapStateToProps, mapDispatchToProps);
-
-const HomePage = (props) => {
-  const { quests, currentQuestType, onQuestTypeClick } = props;
+const Home = () => {
+  const quests = useSelector(getQuests);
+  const currentQuestType = useSelector(getCurrentQuestType);
   const currentQuests = quests.filter((quest) => quest.type === currentQuestType.toLowerCase());
+
+  const questsChecked = currentQuestType === QuestType.AllQuests.type ? quests : currentQuests;
+
+  const dispatch = useDispatch();
+  const onQuestTypeClick = (questType) => {
+    dispatch(changeQuestType(questType));
+  };
 
   return (
     <MainLayout>
@@ -35,7 +32,7 @@ const HomePage = (props) => {
           <PageSubtext>квесты в Санкт-Петербурге</PageSubtext>
         </PageHeading>
         <QuestsCatalog
-          quests={currentQuestType === QuestType.AllQuests.type ? quests : currentQuests}
+          quests={questsChecked}
           currentQuestType={currentQuestType}
           onQuestTypeClick={onQuestTypeClick}
         />
@@ -44,5 +41,4 @@ const HomePage = (props) => {
   );
 };
 
-export {HomePage};
-export default connector(HomePage);
+export default Home;
