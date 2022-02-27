@@ -12,78 +12,74 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getQuest } from 'store/quests-reducer/selector';
 
 const DetailedQuest = () => {
-  const quest = useSelector(getQuest);
   const { id } = useParams();
   const dispatch = useDispatch();
-
-  const [isBookingModalOpened, setIsBookingModalOpened] = useState(false);
-
-  const onBookingBtnClick = () => {
-    setIsBookingModalOpened(true);
-  };
 
   useEffect(() => {
     dispatch(fetchQuestAction(id));
   }, [dispatch, id]);
+  const quest = useSelector(getQuest);
 
+  const [isBookingModalOpened, setIsBookingModalOpened] = useState(false);
+  const onBookingBtnClick = () => {
+    setIsBookingModalOpened(true);
+  };
 
-  if (quest) {
-    const {
-      coverImg,
-      title,
-      type,
-      duration,
-      peopleCount,
-      level,
-      description,
-    } = quest;
+  const {
+    coverImg,
+    title,
+    type,
+    duration,
+    peopleCount,
+    level,
+    description,
+  } = quest;
 
-    return (
-      <MainLayout>
-        <S.Main>
-          <S.PageImage
-            src={`../${coverImg}`}
-            alt={`Квест ${title}`}
-            width={ImageSize.Cover.Width}
-            height={ImageSize.Cover.Height}
-          />
-          <S.PageContentWrapper>
-            <S.PageHeading>
-              <S.PageTitle>{title}</S.PageTitle>
-              <S.PageSubtitle>{type}</S.PageSubtitle>
-            </S.PageHeading>
+  return (
+    <MainLayout>
+      <S.Main>
+        <S.PageImage
+          src={`../${coverImg}`}
+          alt={`Квест ${title}`}
+          width={ImageSize.Cover.Width}
+          height={ImageSize.Cover.Height}
+        />
+        <S.PageContentWrapper>
+          <S.PageHeading>
+            <S.PageTitle>{title}</S.PageTitle>
+            <S.PageSubtitle>{type}</S.PageSubtitle>
+          </S.PageHeading>
 
-            <S.PageDescription>
-              <S.Features>
-                <S.FeaturesItem>
-                  <IconClock width="20" height="20" />
-                  <S.FeatureTitle>{duration} мин</S.FeatureTitle>
-                </S.FeaturesItem>
-                <S.FeaturesItem>
-                  <IconPerson width="19" height="24" />
-                  <S.FeatureTitle>{peopleCount[0]}–{peopleCount[1]} чел</S.FeatureTitle>
-                </S.FeaturesItem>
-                <S.FeaturesItem>
-                  <IconPuzzle width="24" height="24" />
-                  <S.FeatureTitle>{level}</S.FeatureTitle>
-                </S.FeaturesItem>
-              </S.Features>
+          <S.PageDescription>
+            <S.Features>
+              <S.FeaturesItem>
+                <IconClock width="20" height="20" />
+                <S.FeatureTitle>{duration} мин</S.FeatureTitle>
+              </S.FeaturesItem>
+              <S.FeaturesItem>
+                <IconPerson width="19" height="24" />
+                <S.FeatureTitle>{peopleCount[0]}–{peopleCount[1]} чел</S.FeatureTitle>
+              </S.FeaturesItem>
+              <S.FeaturesItem>
+                <IconPuzzle width="24" height="24" />
+                <S.FeatureTitle>{level}</S.FeatureTitle>
+              </S.FeaturesItem>
+            </S.Features>
 
-              <S.QuestDescription>
-                {description}
-              </S.QuestDescription>
+            <S.QuestDescription>
+              {description}
+            </S.QuestDescription>
 
-              <S.QuestBookingBtn onClick={onBookingBtnClick}>
-                Забронировать
-              </S.QuestBookingBtn>
-            </S.PageDescription>
-          </S.PageContentWrapper>
+            <S.QuestBookingBtn onClick={onBookingBtnClick}>
+              Забронировать
+            </S.QuestBookingBtn>
+          </S.PageDescription>
+        </S.PageContentWrapper>
 
-          {isBookingModalOpened && <BookingModal />}
-        </S.Main>
-      </MainLayout>
-    );
-  }
+        {isBookingModalOpened && <BookingModal onClick={onBookingBtnClick} />}
+      </S.Main>
+    </MainLayout>
+  );
 };
 
 export default DetailedQuest;

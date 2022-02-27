@@ -3,7 +3,7 @@ import { ReactComponent as IconPuzzle } from 'assets/img/icon-puzzle.svg';
 import * as S from './quests-catalog.styled';
 import { ImageSize, QuestType } from 'const';
 
-const QuestsCatalog = ({ quests, currentQuestType, onQuestTypeClick }) => (
+const QuestsCatalog = ({ quests, currentQuestType, onQuestTypeClick, onQuestItemClick }) => (
   <>
     <S.Tabs>
       {Object.values(QuestType).map((questType, id) => {
