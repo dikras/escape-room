@@ -21,3 +21,6 @@ export const loadQuest = createAction(
     payload: quest,
   }),
 );
+
+export const loadQuestError = createAction(ActionType.LoadQuestError);
+

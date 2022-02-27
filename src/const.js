@@ -70,12 +70,17 @@ export const QuestType = {
 }
 
 export const ActionType = {
-  ChangeQuestType: 'changeQuestType',
-  LoadQuests: 'loadQuests',
-  LoadQuest: 'loadQuest',
+  ChangeQuestType: 'app/changeQuestType',
+  LoadQuests: 'quests/loadQuests',
+  LoadQuest: 'quest/loadQuest',
+  LoadQuestError: 'quest/loadQuestError',
 }
 
 export const APIRoute = {
   Quests: '/quests',
   Orders: '/orders',
+}
+
+export const WarningMessage = {
+  OrderPostFail: 'Something wrong with order, try again',
 }
