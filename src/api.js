@@ -1,7 +1,5 @@
 import axios from 'axios';
-
-const BACKEND_URL = 'http://localhost:3001';
-const REQUEST_TIMEOUT = 5000;
+import { BACKEND_URL, REQUEST_TIMEOUT } from 'const';
 
 const createAPI = () => {
   const api = axios.create({
