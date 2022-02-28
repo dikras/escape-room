@@ -40,8 +40,6 @@ export const IconSize = {
   ANCHOR_HEIGHT: 55,
 };
 
-export const URL_MARKER = 'img/icon-blip.svg';
-
 export const QuestType = {
   AllQuests: {
     type: 'Все квесты',
@@ -82,6 +80,7 @@ export const APIRoute = {
   Orders: '/orders',
 }
 
-export const WarningMessage = {
-  OrderPostFail: 'Something wrong with order, try again',
+export const UploadMessage = {
+  OrderUploadFail: 'Something wrong with order, try again',
+  OrderUploadSuccess: 'Your order successfully sended',
 }
