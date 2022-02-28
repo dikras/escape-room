@@ -12,10 +12,18 @@ import { appTheme } from './common';
 import * as S from './app.styled';
 import { AppRoute } from 'const';
 import { useSelector } from 'react-redux';
-import { getQuests } from 'store/quests-reducer/selector';
+import { getQuests, getIsDataLoaded } from 'store/quests-reducer/selector';
+import LoadingScreen from 'components/loading-screen/loading-screen';
 
 const App = () => {
   const quests = useSelector(getQuests);
+  const isDataLoaded = useSelector(getIsDataLoaded);
+
+  if (!isDataLoaded) {
+    return (
+      <LoadingScreen />
+    );
+  }
 
   return (
     <ThemeProvider theme={appTheme}>

@@ -5,7 +5,7 @@ import { ReactComponent as IconClose } from 'assets/img/icon-close.svg';
 import { validatePhoneNumber } from 'utils';
 import { uploadOrder } from 'store/api-actions';
 
-const BookingModal = ({ onClick }) => {
+const BookingModal = ({ handleModalCloseBtn }) => {
   const nameRef = useRef(null);
   const phoneRef = useRef(null);
   const countRef = useRef(null);
@@ -35,7 +35,7 @@ const BookingModal = ({ onClick }) => {
   return (
     <S.BlockLayer>
       <S.Modal>
-        <S.ModalCloseBtn onClick={onClick}>
+        <S.ModalCloseBtn onClick={() => handleModalCloseBtn(false)}>
           <IconClose width="16" height="16" />
           <S.ModalCloseLabel>Закрыть окно</S.ModalCloseLabel>
         </S.ModalCloseBtn>

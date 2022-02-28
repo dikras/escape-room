@@ -23,4 +23,3 @@ export const loadQuest = createAction(
 );
 
 export const loadQuestError = createAction(ActionType.LoadQuestError);
-
