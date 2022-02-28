@@ -1,5 +1,5 @@
 import { APIRoute, WarningMessage } from 'const';
-import { loadQuests, loadQuest, loadQuestError } from './action';
+import { loadQuests, loadQuest, loadQuestError, loadUndoQuest } from './action';
 import { adaptQuestToClient } from 'utils';
 import { toast } from 'react-toastify';
 
@@ -11,6 +11,7 @@ export const fetchQuestsAction = () =>
 
 export const fetchQuestAction = (id) =>
   async (dispatch, _getState, api) => {
+    dispatch(loadUndoQuest());
     try {
       const {data} = await api.get(`${APIRoute.Quests}/${id}`);
       dispatch(loadQuest(adaptQuestToClient(data)));

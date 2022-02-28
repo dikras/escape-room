@@ -23,3 +23,5 @@ export const loadQuest = createAction(
 );
 
 export const loadQuestError = createAction(ActionType.LoadQuestError);
+
+export const loadUndoQuest = createAction(ActionType.LoadUndoQuest);
