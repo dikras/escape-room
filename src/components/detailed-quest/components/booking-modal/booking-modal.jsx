@@ -1,5 +1,4 @@
 import { useRef } from 'react';
-import { useDispatch } from 'react-redux';
 import * as S from './booking-modal.styled';
 import { ReactComponent as IconClose } from 'assets/img/icon-close.svg';
 import { validatePhoneNumber } from 'utils';
@@ -11,25 +10,28 @@ const BookingModal = ({ handleModalCloseBtn }) => {
   const countRef = useRef(null);
   const checkboxRef = useRef(null);
 
-  const dispatch = useDispatch();
-
   const handleInputChange = (evt) => {
     if (evt.target === phoneRef.current) {
       phoneRef.current.setCustomValidity(validatePhoneNumber(phoneRef.current.value));
+      phoneRef.current.reportValidity();
     }
   };
 
   const handleSubmit = (evt) => {
-    evt.preventDefault()
+    evt.preventDefault();
+
+    const order = {
+      name: nameRef.current.value,
+      phone: phoneRef.current.value,
+      peopleCount: countRef.current.value,
+      isLegal: checkboxRef.current.value,
+    }
 
     if (nameRef.current && phoneRef.current && countRef.current && checkboxRef.current) {
-      dispatch(uploadOrder({
-        name: nameRef.current.value,
-        phone: phoneRef.current.value,
-        peopleCount: countRef.current.value,
-        isLegal: checkboxRef.current.value,
-      }));
+      uploadOrder(order);
     }
+
+    handleModalCloseBtn(false);
   };
 
   return (

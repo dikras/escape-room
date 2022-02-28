@@ -2,10 +2,11 @@ import { useRef, useEffect } from 'react';
 import useMap from 'hooks/useMap';
 import { Icon, Marker } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { URL_MARKER, IconSize, EscapeRoom } from 'const';
+import { IconSize, EscapeRoom } from 'const';
+import marker from 'assets/img/icon-blip.svg';
 
 const customIcon = new Icon({
-  iconUrl: URL_MARKER,
+  iconUrl: marker,
   iconSize: [IconSize.ICON_WIDTH, IconSize.ICON_HEIGHT],
   iconAnchor: [IconSize.ANCHOR_WIDTH, IconSize.ANCHOR_HEIGHT],
 });
