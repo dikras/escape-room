@@ -5,6 +5,9 @@ import { ReactComponent as IconMystic } from 'assets/img/icon-mystic.svg';
 import { ReactComponent as IconDetective } from 'assets/img/icon-detective.svg';
 import { ReactComponent as IconScifi } from 'assets/img/icon-scifi.svg';
 
+export const BACKEND_URL = 'http://localhost:3001';
+export const REQUEST_TIMEOUT = 5000;
+
 export const AppRoute = {
   Home: '/',
   Contacts: '/contacts',

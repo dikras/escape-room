@@ -23,8 +23,8 @@ const BookingModal = ({ handleModalCloseBtn }) => {
     const order = {
       name: nameRef.current.value,
       phone: phoneRef.current.value,
-      peopleCount: countRef.current.value,
-      isLegal: checkboxRef.current.value,
+      peopleCount: parseInt(countRef.current.value),
+      isLegal: !!(checkboxRef.current.value),
     }
 
     if (nameRef.current && phoneRef.current && countRef.current && checkboxRef.current) {

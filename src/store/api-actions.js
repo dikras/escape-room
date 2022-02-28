@@ -1,9 +1,7 @@
-import { APIRoute, UploadMessage } from 'const';
+import { APIRoute, UploadMessage, BACKEND_URL } from 'const';
 import { loadQuests, loadQuest, loadQuestError, loadUndoQuest } from './action';
 import { adaptQuestToClient } from 'utils';
 import { toast } from 'react-toastify';
-
-const BACKEND_URL = 'http://localhost:3001';
 
 export const fetchQuestsAction = () =>
   async (dispatch, _getState, api) => {
@@ -22,31 +20,19 @@ export const fetchQuestAction = (id) =>
     }
 };
 
-export const uploadOrder = (order) =>
-  async (_getState, api) => {
-    try {
-      await api.post(APIRoute.Orders, order);
-      toast.success(UploadMessage.OrderUploadSuccess);
-    }
-    catch {
-      toast.warn(UploadMessage.OrderUploadFail);
-    }
-  };
-
-/* export async function uploadOrder(order) {
+export async function uploadOrder(order) {
   try {
     await fetch(BACKEND_URL + APIRoute.Orders, {
       method: 'POST',
       headers: {
         "Content-type": "application/json"
       },
-      body: JSON.stringify(async function uploadOrder(order) {
-      }),
+      body: JSON.stringify(order),
     });
-    toast.success(WarningMessage.OrderPostSuccess)
+    toast.success(UploadMessage.OrderUploadSuccess);
   }
   catch {
-    toast.error(WarningMessage.OrderPostFail)
+    toast.error(UploadMessage.OrderUploadFail);
   }
-} */
+}
 
