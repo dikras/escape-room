@@ -73,6 +73,7 @@ export const ActionType = {
   ChangeQuestType: 'app/changeQuestType',
   LoadQuests: 'quests/loadQuests',
   LoadQuest: 'quest/loadQuest',
+  LoadUndoQuest: 'quest/loadUndoQuest',
   LoadQuestError: 'quest/loadQuestError',
 }
 

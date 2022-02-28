@@ -13,17 +13,17 @@ import { getQuest } from 'store/quests-reducer/selector';
 
 const DetailedQuest = () => {
   const { id } = useParams();
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchQuestAction(id));
-  }, [dispatch, id]);
   const quest = useSelector(getQuest);
 
   const [isBookingModalOpened, setIsBookingModalOpened] = useState(false);
   const onBookingBtnClick = () => {
     setIsBookingModalOpened(true);
   };
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchQuestAction(id));
+  }, [dispatch, id]);
 
   const {
     coverImg,
@@ -34,6 +34,7 @@ const DetailedQuest = () => {
     level,
     description,
   } = quest;
+
 
   return (
     <MainLayout>
@@ -76,7 +77,7 @@ const DetailedQuest = () => {
           </S.PageDescription>
         </S.PageContentWrapper>
 
-        {isBookingModalOpened && <BookingModal onClick={onBookingBtnClick} />}
+        {isBookingModalOpened && <BookingModal handleModalCloseBtn={setIsBookingModalOpened}/>}
       </S.Main>
     </MainLayout>
   );
